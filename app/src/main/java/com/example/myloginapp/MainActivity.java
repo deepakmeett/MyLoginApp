@@ -45,8 +45,18 @@ public class MainActivity extends AppCompatActivity {
         loginButton = findViewById( R.id.login_button );
         textView = findViewById( R.id.text );
         loginButton.setReadPermissions( Arrays.asList( "email", "public_profile" ) );
+        
+        textView.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                auth.signOut();
+                Toast.makeText( MainActivity.this, "Logout Successfully", Toast.LENGTH_SHORT ).show();
+                
+            }
+        } );
 
     }
+    
 
     public void setLoginButton(View view) {
         loginButton.registerCallback( callbackManager, new FacebookCallback<LoginResult>() {
@@ -101,4 +111,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    
 }
